@@ -15,11 +15,12 @@ public class App
        listaAlumnos.agregar(new Alumno("Jonathan Jared", "7723424")); // Agregar elemento
        listaAlumnos.agregar(new Alumno("Manuel Segaline", "231234555")); // Agregar elemento
        listaAlumnos.agregar(new Alumno("Bernad Gutierrez", "2010292335")); // Agregar elemento
+       listaAlumnos.agregar(new Alumno("Naomi Tacachira", "2010292335")); // Agregar elemento
        System.out.println("El tamanio de la lista es: " + listaAlumnos.getTamanio());
        listaAlumnos.imprimir(); // Imprimir el contenido
-       //listaAlumnos.obtener(3); // Obtener un elemento por una posicion
-       // listaAlumnos.eliminar(0); // Elimnar un elemento por una posicion
-
+       System.out.println(listaAlumnos.obtener(4)); // Obtener un elemento por una posicion
+       listaAlumnos.eliminar(0); // Elimnar un elemento por una posicion
+       listaAlumnos.imprimir();
     }
 
     public void ejemploVector() {

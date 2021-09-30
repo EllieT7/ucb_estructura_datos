@@ -35,4 +35,13 @@ public class Alumno {
         this.nombreCompleto = nombreCompleto;
     }
 
+    @Override
+    public String toString() {
+        return "Alumno {" +
+                "nombreCompleto='" + nombreCompleto + '\'' +
+                ", cedulaIdentidad='" + cedulaItentidad + '\'' +
+                '}';
+    }
+
+
 }

@@ -3,6 +3,11 @@ package bo.edu.ucb.est;
 public class Lista {
     private int tamanio;
     private Alumno primerElemento;
+
+    public void setPrimerElemento(Alumno primerElemento) {
+        this.primerElemento = primerElemento;
+    }
+
     public Lista() {
         tamanio = 0;
         primerElemento = null;
@@ -17,14 +22,18 @@ public class Lista {
             Alumno nodoActual = primerElemento;
             do {
                 // Verificamos si estamos al final de la lista.
-                if (nodoActual.getApuntadorASiguiente() == null) {
+                if (nodoActual.getApuntadorASiguiente() != null) {
+                    nodoActual = nodoActual.getApuntadorASiguiente();
+                    if(nodoActual.getApuntadorASiguiente() == null){
+                        nodoActual.setApuntadorASiguiente(alumno);
+                        break;
+                    }
+                }else{
                     // Agregamos el alumno al final
                     nodoActual.setApuntadorASiguiente(alumno);
-                } else {
-                    nodoActual = nodoActual.getApuntadorASiguiente();
+                    break;
                 }
-                
-            } while (nodoActual.getApuntadorASiguiente() == null);
+            } while (nodoActual.getApuntadorASiguiente() != null);
             // Itero mientras no este en el ultimo nodo.
         }
     }
@@ -41,4 +50,34 @@ public class Lista {
     public int getTamanio() {
         return tamanio;
     }
+
+    public Alumno obtener(int posicion){
+        Alumno nodoActual = primerElemento;
+        Alumno nodoAObtener = null;
+        for(int i=0; i<getTamanio();i++){
+            if(i==posicion){
+                nodoAObtener = nodoActual;
+                break;
+            }
+            nodoActual = nodoActual.getApuntadorASiguiente();
+        }
+        return nodoAObtener;
+    }
+    public void eliminar(int posicion){
+        Alumno nodoActual = primerElemento;
+        for(int i=1; i<=getTamanio();i++){
+            if(posicion==0){
+                setPrimerElemento(primerElemento.getApuntadorASiguiente());
+                break;
+            }else{
+                if(i==posicion){
+                    nodoActual.setApuntadorASiguiente(nodoActual.getApuntadorASiguiente().getApuntadorASiguiente());
+                    break;
+                }else{
+                    nodoActual = nodoActual.getApuntadorASiguiente();
+                }
+            }
+        }
+    }
+    
 }
